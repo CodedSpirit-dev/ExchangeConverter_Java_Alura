@@ -1,16 +1,11 @@
 package com.exchangeconverter.bashconverter.main;
 
-import com.exchangeconverter.bashconverter.api.ApiTest;
+import com.exchangeconverter.bashconverter.api.ApiEndpoints;
 
 public class Main {
     public static void main(String[] args) {
         System.out.println("Hello World!");
 
-        // Call the ApiTest class
-        ApiTest apiTest = new ApiTest();
-
-        // Print the response
-        System.out.println(apiTest.response.body());
-
+        ApiEndpoints apiEndpoints = new ApiEndpoints();
     }
 }
