@@ -1,53 +1,40 @@
 package com.exchangeconverter.bashconverter.api;
 
 import java.io.IOException;
-import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
 import java.util.Scanner;
-
-import static com.exchangeconverter.bashconverter.api.UrlApi.buildUrl;
 
 public class ApiEndpoints {
 
     public static void main(String[] args) throws IOException, InterruptedException {
-        // Create endpoint for latest exchange rates
-        latestExchangeRates();
+        ExchangeRateApi exchangeRateApi = new ExchangeRateApi();
 
-        // Create endpoint for historical exchange rates
-        //historicalExchangeRates();
-    }
-
-    // Create endpoint for latest exchange rates
-    static void latestExchangeRates() throws IOException, InterruptedException {
-        // Build the URL
-        String urlBase = buildUrl();
-        String url = urlBase + "/latest/USD";
-
-        // Let the user choose the currency through the console
+        int user = 1;
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter the currency you want to convert to, in case that you want all the currencies, type 'all':");
-        String currency = scanner.nextLine();
+        System.out.println("Enter 1 to get the latest exchange rates or 2 to get the latest exchange rates with amount:");
+        user = scanner.nextInt();
 
-        if (!currency.equals("all")) {
-            url = urlBase + "/latest/" + currency;
+        if(user == 1){
+            exchangeRateApi.getLatestExchangeRates();
+            System.out.println("Do you want to go back to the main menu? Enter 1 for yes or 2 for no:");
+            user = scanner.nextInt();
+            if(user == 1){
+                main(args);
+            } else {
+                System.out.println("Goodbye!");
+            }
+        } else if(user == 2){
+            exchangeRateApi.getLatestExchangeRatesWithAmount();
+            System.out.println("Do you want to go back to the main menu? Enter 1 for yes or 2 for no:");
+            user = scanner.nextInt();
+            if(user == 1){
+                main(args);
+            } else {
+                System.out.println("Goodbye!");
+            }
         } else {
-            url = urlBase + "/latest";
+            System.out.println("Invalid option");
         }
 
-        // Create a new HTTP client
-        HttpClient client = HttpClient.newHttpClient();
-
-        // Create a new HTTP request
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(url))
-                .build();
-
-        // Send the request and get the response
-        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-
-        // Print the response
-        System.out.println("Latest Exchange Rates: " + response.body());
     }
+
 }

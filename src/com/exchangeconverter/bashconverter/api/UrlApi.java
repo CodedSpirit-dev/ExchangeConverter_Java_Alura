@@ -10,7 +10,7 @@ public class UrlApi {
         System.out.println("API URL: " + urlBase);
     }
 
-    static String buildUrl() {
+    public static String buildUrl() {
         // URL Builder
         StringBuilder urlBuildedWithApi = new StringBuilder();
         urlBuildedWithApi.append("https://v6.exchangerate-api.com/v6/")
