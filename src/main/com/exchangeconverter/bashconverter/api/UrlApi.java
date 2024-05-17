@@ -1,4 +1,4 @@
-package com.exchangeconverter.bashconverter.api;
+package main.com.exchangeconverter.bashconverter.api;
 
 public class UrlApi {
     // Define API key as a constant

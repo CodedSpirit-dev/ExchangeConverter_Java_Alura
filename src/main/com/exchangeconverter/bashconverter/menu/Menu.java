@@ -1,4 +1,4 @@
-package com.exchangeconverter.bashconverter.menu;
+package main.com.exchangeconverter.bashconverter.menu;
 
 public class Menu {
     public static void main(String[] args) {

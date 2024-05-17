@@ -1,9 +1,4 @@
-package com.exchangeconverter.bashconverter.api;
-
-import com.google.gson.FieldNamingPolicy;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonObject;
+package main.com.exchangeconverter.bashconverter.api;
 
 import java.io.IOException;
 import java.net.URI;
@@ -12,11 +7,16 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.Scanner;
 
+import main.com.google.gson.FieldNamingPolicy;
+import main.com.google.gson.Gson;
+import main.com.google.gson.GsonBuilder;
+import main.com.google.gson.JsonObject;
+
 public class ExchangeRateApi {
 
     private final String baseUrl = "https://v6.exchangerate-api.com/v6/9beb9440922d7b3f38f00bc4";
 
-    public ExchangeRateApi(){
+    public ExchangeRateApi() {
 
     }
 
@@ -42,7 +42,8 @@ public class ExchangeRateApi {
         System.out.println(url);
         //
         try {
-            HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
+            HttpResponse<String> response = HttpClient.newHttpClient().send(request,
+                    HttpResponse.BodyHandlers.ofString());
             System.out.println(response.body());
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
@@ -71,7 +72,8 @@ public class ExchangeRateApi {
                 break; // Si la conversión es exitosa, sal del bucle
             } catch (NumberFormatException e) {
                 System.out.println("Invalid amount, please enter a number.");
-                System.out.println("Do you want to try again? Enter 1 for yes, 2 for no, or 3 to go back to the main menu:");
+                System.out.println(
+                        "Do you want to try again? Enter 1 for yes, 2 for no, or 3 to go back to the main menu:");
                 int user = Integer.parseInt(scannerAmount.nextLine());
                 if (user == 2) {
                     System.out.println("Goodbye!");
@@ -92,7 +94,8 @@ public class ExchangeRateApi {
         // Send the request and get the response
         try {
             // Send the request and get the response
-            HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
+            HttpResponse<String> response = HttpClient.newHttpClient().send(request,
+                    HttpResponse.BodyHandlers.ofString());
             System.out.println(response.body());
 
             // Parse the JSON response

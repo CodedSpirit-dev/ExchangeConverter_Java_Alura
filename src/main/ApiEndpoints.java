@@ -1,4 +1,6 @@
-package com.exchangeconverter.bashconverter.main;
+package main;
+
+import static main.com.exchangeconverter.bashconverter.api.UrlApi.buildUrl;
 
 import java.io.IOException;
 import java.net.URI;
@@ -7,9 +9,6 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.Scanner;
 
-import static com.exchangeconverter.bashconverter.api.UrlApi.buildUrl;
-
-
 public class ApiEndpoints {
 
     public static void main(String[] args) throws IOException, InterruptedException {
@@ -17,10 +16,10 @@ public class ApiEndpoints {
         latestExchangeRates();
 
         // Create endpoint for historical exchange rates
-        //historicalExchangeRates();
+        // historicalExchangeRates();
     }
 
-    //Create a connection to the API in general
+    // Create a connection to the API in general
     private static void connectionBase(HttpRequest request) throws IOException, InterruptedException {
         // Build the URL
         String urlBase = buildUrl();
@@ -49,7 +48,8 @@ public class ApiEndpoints {
 
         // Let the user choose the currency through the console
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter the currency you want to convert to, in case that you want all the currencies, type 'all':");
+        System.out.println(
+                "Enter the currency you want to convert to, in case that you want all the currencies, type 'all':");
         String currency = scanner.nextLine();
 
         if (!currency.equals("all")) {
