@@ -1,12 +1,11 @@
-package main;
+import com.exchangeconverter.bashconverter.controller.ExchangeRateController;
+import com.exchangeconverter.bashconverter.model.ExchangeRateApi;
+import com.exchangeconverter.bashconverter.view.ConsoleView;
 
-import java.io.IOException;
 
-import main.com.exchangeconverter.bashconverter.api.ExchangeRateApi;
-
-public class main {
+public class Main {
     public static void main(String[] args) throws IOException, InterruptedException {
-        ExchangeRateApi exchangeRateApi = new ExchangeRateApi();
+        ExchangeRateApiWrapper exchangeRateApi = new ExchangeRateApiWrapper();
         ConsoleView consoleView = new ConsoleView();
         ExchangeRateController exchangeRateController = new ExchangeRateController(exchangeRateApi, consoleView);
         exchangeRateController.start();

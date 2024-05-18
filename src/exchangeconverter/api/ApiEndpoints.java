@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class ApiEndpoints {
 
     public static void main(String[] args) throws IOException, InterruptedException {
-        ExchangeRateApi exchangeRateApi = new ExchangeRateApi();
+        ExchangeRateApiWrapper exchangeRateApi = new ExchangeRateApiWrapper();
 
         int user = 1;
         Scanner scanner = new Scanner(System.in);
