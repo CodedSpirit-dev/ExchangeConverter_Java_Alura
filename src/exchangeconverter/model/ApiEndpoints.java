@@ -1,4 +1,4 @@
-package exchangeconverter.api;
+package exchangeconverter.model;
 
 public class ApiEndpoints {
     
