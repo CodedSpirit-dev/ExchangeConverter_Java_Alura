@@ -8,7 +8,7 @@ import java.net.http.HttpResponse;
 import com.google.gson.Gson;
 
 public class ApiConsume {
-    public String obtainData(String url) {
+    public <T> T obtainData(String url, Class <T> clazz) {
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(url))
@@ -17,6 +17,7 @@ public class ApiConsume {
         try {
             response = client
                     .send(request, HttpResponse.BodyHandlers.ofString());
+            return new Gson().fromJson(response.body(), clazz);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -27,4 +28,5 @@ public class ApiConsume {
         Gson gson = new Gson();
         return gson.toJson(response);
     }
+
 }
