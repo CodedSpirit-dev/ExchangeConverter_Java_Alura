@@ -1,14 +1,10 @@
-import com.exchangeconverter.bashconverter.controller.ExchangeRateController;
-import com.exchangeconverter.bashconverter.model.ExchangeRateApi;
-import com.exchangeconverter.bashconverter.view.ConsoleView;
-
+import exchangeconverter.model.UrlApi;
 
 public class Main {
-    public static void main(String[] args) throws IOException, InterruptedException {
-        ExchangeRateApiWrapper exchangeRateApi = new ExchangeRateApiWrapper();
-        ConsoleView consoleView = new ConsoleView();
-        ExchangeRateController exchangeRateController = new ExchangeRateController(exchangeRateApi, consoleView);
-        exchangeRateController.start();
+    public static void main(String[] args) {
+        UrlApi urlApi = new UrlApi();
+
+        urlApi.printApiUrl(urlApi.buildUrlWithApiKey());
     }
 
 }
